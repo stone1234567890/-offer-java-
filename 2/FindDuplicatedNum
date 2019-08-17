@@ -1,0 +1,55 @@
+package com.nowcoder.jianzhi;
+
+import java.util.Scanner;
+
+public class FindDuplicatedNum {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int len = sc.nextInt();
+        int[] arr = new int[len];
+        for(int i = 0 ; i<arr.length;i++){
+            arr[i]=sc.nextInt();
+        }
+        findDuplicatedNums(arr,1,arr.length-1);
+    }
+
+    private static void findDuplicatedNums(int[] arr, int l, int r) {
+        if(arr.length==0||arr==null){
+            return;
+        }
+        while (r>=l){
+            int mid = ( l + r )/2;
+            int count = countRange(arr,arr.length,l,mid);
+            if(l==r){
+                if(count>1){
+                    System.out.println(l);
+                    return;
+                }else {
+                    break;
+                }
+            }
+            if(count>(mid-l+1)){
+                r=mid;
+            }else {
+                l=mid+1;
+            }
+
+        }
+        System.out.println(-1);
+    }
+
+    private static int countRange(int[] arr, int length, int l, int r) {
+        if(arr==null){
+            return 0;
+        }
+        int count = 0 ;
+        for(int i= 0 ; i<length;i++){
+            if(arr[i]>=l&&arr[i]<=r){
+                ++count;
+            }
+        }
+        return count;
+    }
+
+
+}
