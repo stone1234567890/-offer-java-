@@ -1,0 +1,25 @@
+package com.nowcoder.jianzhi;
+
+import java.util.Scanner;
+
+public class ReplaceSpace {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNext()){
+            String line = sc.nextLine();
+            char[] charArr =  line.toCharArray();
+            String s ="";
+            for(int i = 0 ; i<charArr.length;i++){
+                if(charArr[i]==' '){
+//                    charArr[i]="%20";
+
+                    s+="%20";
+                    i++;
+                }
+                //如果不是空格的话就直接添加到字符串
+                s+=charArr[i];
+            }
+            System.out.println(s);
+        }
+    }
+}
